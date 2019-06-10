@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export class RpcHandler {
 
@@ -7,9 +7,11 @@ export class RpcHandler {
 
     constructor(url: string) {
         this.url = url;
+        const username = process.env.ZNODE_USER ? process.env.ZNODE_USER : "";
+        const password = process.env.ZNODE_PASS ? process.env.ZNODE_PASS : "";
         this.config = {
             headers: { "content-type": "text/plain" },
-            auth: {username: "komibomi", password: "Pm/pd7ZLvBj+gXD6lUY6XU+1rlnAF6WVs/60AipQSBg="}
+            auth: {username, password}
         };
     }
 

@@ -6,7 +6,8 @@ export class StatusService {
     private rpcHandler: RpcHandler;
 
     constructor() {
-        this.rpcHandler = new RpcHandler("http://patdreis.ddns.net:8232");
+        const address = process.env.ZNODE_ADDR ? process.env.ZNODE_ADDR : "";
+        this.rpcHandler = new RpcHandler(address);
     }
 
     public async getInfo(): Promise<any> {
