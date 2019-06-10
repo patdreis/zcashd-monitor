@@ -1,5 +1,6 @@
 import * as bodyParser from "body-parser";
 import express from 'express';
+import cors from 'cors';
 import morgan from "morgan";
 import { Routes } from "./Routes";
 
@@ -20,6 +21,8 @@ class App {
         if (process.env.NODE_ENV === "production") {
             morganFormat = "common";
         }
+        this.app.use(cors());
+
         this.app.use(morgan(morganFormat));
 
         this.app.use(bodyParser.urlencoded({extended: true }));
